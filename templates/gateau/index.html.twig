@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GateauController!{% endblock %}
+
+{% block body %}
+    <div>
+        {% for gateau in gateaux %}
+            <div class="border border-secondary row p-2 m-1">
+                <div class="d-flex flex-column">
+                    <div>
+                        <h2>{{ gateau.name }}</h2>
+                        <p>{{ gateau.description }}</p>
+                    </div>
+                    {% for ingredient in gateau.ingredients %}
+                        <div class="border m-1 p-1">
+                            <p class="m-0">{{ ingredient.name }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div>
+                    <a class="btn btn-primary" href="{{ path('app_gateau_show', {id:gateau.id}) }}">show</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
